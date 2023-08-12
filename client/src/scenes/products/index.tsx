@@ -23,15 +23,15 @@ const Product = ({
   category,
   supply,
   stat,
-}) => {
-  const theme = useTheme();
+}:any) => {
+  const theme:any = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <Card
       sx={{
         backgroundImage: "none",
-        backgroundColor: theme.palette.background.alt,
+        bgcolor: theme.palette.background.alt,
         borderRadius: "0.55rem",
       }}
     >
@@ -55,7 +55,7 @@ const Product = ({
       </CardContent>
       <CardActions>
         <Button
-          variant="primary"
+          //variant="primary"
           size="small"
           onClick={() => setIsExpanded(!isExpanded)}
         >
@@ -86,7 +86,7 @@ const Product = ({
 };
 
 const Products = () => {
-  const { data, isLoading } = useGetProductsQuery();
+  const { data, isLoading } = useGetProductsQuery("");
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   return (
@@ -104,7 +104,7 @@ const Products = () => {
             "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
           }}
         >
-          {data.map(
+          {data?.map(
             ({
               _id,
               name,
@@ -114,7 +114,7 @@ const Products = () => {
               category,
               supply,
               stat,
-            }) => (
+            }:any) => (
               <Product
                 key={_id}
                 _id={_id}
