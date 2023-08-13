@@ -27,7 +27,9 @@ const Layout = () => {
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
+        <div style={{paddingBottom:"1.5rem"}}>
         <Outlet />
+        </div>
       </Box>
     </Box>
   );

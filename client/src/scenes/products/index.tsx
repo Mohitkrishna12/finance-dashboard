@@ -55,7 +55,7 @@ const Product = ({
       </CardContent>
       <CardActions>
         <Button
-          //variant="primary"
+          variant="primary"
           size="small"
           onClick={() => setIsExpanded(!isExpanded)}
         >
@@ -124,7 +124,7 @@ const Products = () => {
                 rating={rating}
                 category={category}
                 supply={supply}
-                stat={stat}
+                stat={stat[0]}
               />
             )
           )}
