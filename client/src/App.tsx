@@ -16,7 +16,7 @@ import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
 import Admin from "scenes/admin";
 import Performance from "scenes/performance";
-import { RootState } from "state/store";
+
 
 function App() {
   const mode = useSelector((state:any) => state.global.mode);
