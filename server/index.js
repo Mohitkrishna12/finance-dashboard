@@ -9,6 +9,8 @@ import clientRoutes from "./routes/client.js";
 import salesRoutes from "./routes/sales.js";
 import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
+import User from "./models/User.js";
+import {dataUser} from './data/index.js'
 
 dotenv.config();
 const app = express();
@@ -20,10 +22,10 @@ app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 
-app.use("./client", clientRoutes);
-app.use("./sales", salesRoutes);
-app.use("./general", generalRoutes);
-app.use("./management", managementRoutes);
+app.use("/client", clientRoutes);
+app.use("/sales", salesRoutes);
+app.use("/general", generalRoutes);
+app.use("/management", managementRoutes);
 
 const PORT = process.env.PORT || 9000;
 mongoose
@@ -31,5 +33,9 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => app.listen(PORT, () => console.log("server started")))
+  .then(() =>{ app.listen(PORT, () => console.log(`server started ${PORT}`)
+);
+  //User.insertMany(dataUser);
+  }
+  )
   .catch((err) => console.log(err));
