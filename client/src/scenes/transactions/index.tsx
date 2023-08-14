@@ -18,7 +18,8 @@ const Transactions = () => {
 
   const [searchInput, setSearchInput] = useState("");
   const { data, isLoading }:any = useGetTransactionsQuery({
-    paginationModel,
+    page:paginationModel.page,
+    pageSize:paginationModel.pageSize,
     sort: JSON.stringify(sort),
     search,
   });
@@ -98,7 +99,7 @@ const Transactions = () => {
           sortingMode="server"
           onSortModelChange={(newSortModel) => setSort({ ...newSortModel })}
           slots={{ toolbar: DataGridCustomToolbar }}
-          componentsProps={{
+          slotProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
         />
