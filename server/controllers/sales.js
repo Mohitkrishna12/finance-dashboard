@@ -1,5 +1,11 @@
-import express from "express";
+import OverallStat from "../models/OverallStat.js";
 
-const router = express.Router();
-
-export default router;
+export const getSales = async(req,res)=>{
+    try {
+        const overStat = await OverallStat.find();
+        res.status(200).json(overStat[0])
+        
+    } catch (error) {
+        res.status(400).json({message:error})
+    }
+}
